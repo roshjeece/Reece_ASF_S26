@@ -44,3 +44,7 @@ What is the difference between an inline element and a block element?
 - A block element takes up as much room as it possibly can
 - An inline element only takes up as much space as it needs
 
+Best Practices for HTML Thinking:
+1. Write the code
+2. Create an expectation of what you EXPECT to see
+3. THEN, check the browser
