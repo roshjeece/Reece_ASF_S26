@@ -22,6 +22,9 @@
 # Defining HTML ...
 - Hyper Text Markup Language
 - Skeleton/Outline/Structure
-- Attributes
+* Attributes:
+- Default Styling
+- Meta Data
+- Semantic
 
 # ... vs. CSS
