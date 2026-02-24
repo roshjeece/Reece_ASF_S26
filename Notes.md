@@ -31,8 +31,9 @@
 
 ## Introducing HTML Content
 
-`HTML
-<a href=URL_destination">Clickable link text or image</a>`
+```HTML
+<a href=URL_destination">Clickable link text or image</a>
+```
 
 # ... vs. CSS
 
