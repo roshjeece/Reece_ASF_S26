@@ -38,5 +38,5 @@
 <a href="URL_destination" style="color: red;">Clickable link text or image</a>
 ```
 
-
+When working with html ALWAYS start with index.html
 
