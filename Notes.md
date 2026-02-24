@@ -38,7 +38,7 @@
 <a href="URL_destination" style="color: red;">Clickable link text or image</a>
 ```
 
-When working with html ALWAYS start with index.html
+### When working with html ALWAYS start with index.html
 
 What is the difference between an inline element and a block element?
 - A block element takes up as much room as it possibly can
