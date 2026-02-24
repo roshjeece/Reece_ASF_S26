@@ -27,7 +27,8 @@
     - Default Properties
   - Meta Data
   - Semantic
-    - Accessibility
+    - Accessibility 
+
   - Review: Content-Padding-Border-Margin Box Model
 
 ## Introducing HTML Content
