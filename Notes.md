@@ -24,6 +24,7 @@
 - Skeleton/Outline/Structure
 * Attributes:
   - Default Styling
+    - Default Properties
   - Meta Data
   - Semantic
 
