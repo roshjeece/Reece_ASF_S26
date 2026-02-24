@@ -23,8 +23,8 @@
 - Hyper Text Markup Language
 - Skeleton/Outline/Structure
 * Attributes:
-- Default Styling
-- Meta Data
-- Semantic
+  - Default Styling
+  - Meta Data
+  - Semantic
 
 # ... vs. CSS
