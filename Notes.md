@@ -28,6 +28,7 @@
   - Meta Data
   - Semantic
     - Accessibility
+  - Review: Content-Padding-Border-Margin Box Model
 
 ## Introducing HTML Content
 
@@ -35,6 +36,5 @@
 <a href="URL_destination" style="color: red;">Clickable link text or image</a>
 ```
 
-# ... vs. CSS
 
-# 
+

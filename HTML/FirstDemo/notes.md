@@ -1,0 +1,1 @@
+When working with html ALWAYS start with index.html
