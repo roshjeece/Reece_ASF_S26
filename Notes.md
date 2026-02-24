@@ -22,6 +22,8 @@
 # Defining HTML ...
 - Hyper Text Markup Language
 - Skeleton/Outline/Structure
+- Review: Content-Padding-Border-Margin Box Model
+
 * Attributes:
   - Default Styling
     - Default Properties
@@ -29,7 +31,6 @@
   - Semantic
     - Accessibility 
 
-  - Review: Content-Padding-Border-Margin Box Model
 
 ## Introducing HTML Content
 
