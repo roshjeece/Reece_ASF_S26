@@ -40,3 +40,7 @@
 
 When working with html ALWAYS start with index.html
 
+What is the difference between an inline element and a block element?
+- A block element takes up as much room as it possibly can
+- An inline element only takes up as much space as it needs
+
