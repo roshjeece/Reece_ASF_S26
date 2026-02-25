@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Demo</title>
+</head>
+<body>
+<!--Forms: we need to know where the info is going and what the info looks like-->
+<!--ONLY that which is in the form will be submitted!-->
+
+<form>
+<!--    inputs = user giving data-->
+    <label>First Name:
+        <input type="text" name="first_name">
+    </label>
+<!--    Clean implementation-->
+    <label>Last Name:
+        <input type="test" name="last_name">
+    </label>
+<!--    The type tells the input what HTML validation and styling to use-->
+<!--    The id is NOT required, but appears by default when selecting input type: text-->
+    <label>Password:
+        <input type="password" name="password">
+    </label>
+
+    <label>Email:
+        <input type="email" name="email">
+    </label>
+
+<!--    radio buttons-->
+    <br>
+    <label>Is you dead or alive????
+        <input type="radio" name="livingStatus" value="yes"> Yep
+        <input type="radio" name="livingStatus" value="no" checked> Nope
+        <input type="radio" name="livingStatus" value="zombie"> Zombie
+<!--        You must name them all the same thing, otherwise multiple radio buttons are selectable-->
+<!--        This also means that hitting yes on any of them will create a value of 'on'-->
+    </label>
+
+
+    <button type="submit">Submit</button>
+<!--    need to submit data-->
+
+</form>
+
+</body>
+</html>
