@@ -23,3 +23,16 @@
   - Images:
     - (1) logo image
     - (3) content images
+
+### Home Page (index.html)
+- Navbar:
+  - Home
+  - Menu
+  - Reservations
+- Logo Image
+- "Hero" Section
+  - **h1** restaurant name
+  - short tagline
+  - one content image (Image #1) with alt text
+- Brand, theme, and layout should be consistent across all pages
+
