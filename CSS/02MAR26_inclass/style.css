@@ -1,0 +1,35 @@
+* {
+
+}
+
+body {
+    background-color: #b3c2c5;
+}
+
+div {
+    border: 3px red solid;
+}
+
+#onions {
+    border: 3px green solid;
+    padding: 100px 50px 25px 10px;
+}
+
+.yummy {
+    font-size: 50px;
+}
+
+#fries.yummy {
+    font-weight: bolder;
+}
+/*id.class*/
+
+#burger.yummy {
+    margin-bottom: 50px;
+    border-bottom: black 20px ridge;
+    border-bottom: none;
+}
+
+h1 {
+    font-family: "Henny Penny", system-ui;
+}
