@@ -1,0 +1,48 @@
+:root {
+    --bg: #74BBC0; /* Pitch Black for background */
+    --errors: #D9C5B2; /* Pale Oak errors and callouts */
+    --text: #F3F3F4; /* Platinum used for text */
+    --highlights-for-notes: #7E7F83; /* Grey - used for notes */
+    --shadows: #34312D; /* Graphite - shadows */
+}
+
+body {
+    background-color: var(--bg);
+}
+
+.fa-dumpster {
+    color: green;
+    font-size: 400px;
+    text-shadow: 5px 5px 0 white;
+}
+
+h1 {
+    text-shadow: 5px 5px 3px white;
+    margin: 0 auto;
+    width: 100px;
+}
+
+h1:hover {
+    background-color: green;
+}
+
+button:hover {
+    color: var(--errors);
+}
+
+div {
+    width: 300px;
+    height: 300px;
+    background-color: var(--errors);
+    box-shadow: 1px 3px 5px black;
+}
+
+input:focus {
+    padding-bottom: 100px;
+    background-color: red;
+}
+
+/* Talked about color theory. Walked through downtown Austin and did color study
+of surrounding area. AI can be used to pull color palettes from images taken.
+The above code is how you can implement a color palette. Challenge is getting my
+intelliJ to show the colors in the gutter for an easy preview.*/
