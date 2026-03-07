@@ -1,3 +1,19 @@
+/*
+COLOR THEME – Gear & Gutter Speakeasy
+
+This stylesheet uses a dark, industrial palette inspired by a hidden steampunk
+speakeasy.
+
+Base Background (#1a1714): dim, underground atmosphere,
+with radial gradients that add depth and a smoky/mechanical feel.
+
+Text (#F8F0E3): warm ivory tone for readability against the dark backdrop.
+Interactive Elements (#c49a5a, #e0b97a): links, accents use brass and antique gold tones
+like aged metal, gears, and vintage machinery.
+
+Intent: moody, secretive, mechanical (aesthetic of an underground steampunk bar)
+*/
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,7 +30,7 @@ body {
     background-attachment: fixed;
     color: #F8F0E3;
     text-align: center;
-    padding: 2 rem; /* breathing room from the edges */
+    padding: 2rem; /* breathing room from the edges */
 
 }
 
@@ -31,6 +47,72 @@ a:hover {
     text-decoration-color: rgba(224, 185, 122, 0.7);
 }
 
+caption {
+    font-family: "Cinzel", serif;
+    font-size: 0.95rem;
+    color: #c49a5a;
+    padding: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+/* Form styling: aligned labels, spacing, consistent input widths */
+form .card,
+form fieldset {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+fieldset legend {
+    color: #c49a5a;
+    font-size: 1rem;
+    padding: 0 0.5rem;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+form label {
+    min-width: 160px;
+    text-align: right;
+    color: #F8F0E3;
+}
+
+form input,
+form select,
+form textarea {
+    width: 260px;
+    padding: 0.4rem 0.6rem;
+    background-color: #2a241c;
+    color: #F8F0E3;
+    border: 1px solid rgba(196, 154, 90, 0.4);
+    border-radius: 6px;
+}
+
+form input[type="checkbox"],
+form input[type="radio"] {
+    width: auto;
+}
+
+form button {
+    margin: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem 1.25rem;
+    background-color: #c49a5a;
+    color: #1a1714;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e0b97a;
+}
+
 p {
     max-width: 65ch;
     margin: 0 auto;
@@ -38,6 +120,7 @@ p {
 
 h1, h2 {
     margin-bottom: 0.5rem; /* space below headings */
+    margin-top: 1rem;
 }
 
 header {
@@ -46,17 +129,133 @@ header {
 
 img {
     margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
 }
 
+/* navbar styling (horizontal layout, hover state) */
 nav {
-    margin-bottom: 2rem;
+    display: flex; /* automatically line up in a row horizontally by becoming flex items */
+    justify-content: center; /* control horizontal alignment */
+    gap: 1rem; /* create even spacing */
 }
+
+.card {
+    background: rgba(26, 23, 20, 0.85);
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 800px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+
+
+
 
 .center-table {
-    max-width: 55ch;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 70ch;
     /* A shorthand for the above is: */
-    margin: 0 auto;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
 }
+
+
+.cinzel {
+             font-family: "Cinzel", serif;
+             font-optical-sizing: auto;
+             font-weight: 500;
+             font-style: normal;
+         }
+
+.table-container {
+    padding-bottom: 20px; /* Adds space below the whole table */
+}
+/* Hide checkbox */
+.secret-toggle {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Hint text */
+.secret-hint {
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+/* Lock plate */
+.keyhole-lock {
+    display: inline-block;
+    padding: 1.5rem;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #8a6a2c, #caa24f);
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+}
+
+/* Lock hover effect */
+.keyhole-lock:hover {
+    transform: translateY(-2px);
+}
+
+/* Keyhole shape */
+.keyhole {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 0.5rem auto;
+    background: black;
+    border-radius: 50%;
+    position: relative;
+}
+
+/* keyhole stem */
+.keyhole::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 18px;
+    background: black;
+    top: 18px;
+    left: 7px;
+    border-radius: 4px;
+}
+
+/* text under keyhole */
+.lock-text {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+/* Hidden item */
+.secret-item {
+    display: none;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+}
+
+/* Reveal when clicked */
+.secret-toggle:checked + .keyhole-lock + .secret-item {
+    display: block;
+}
+
+/* Image */
+.secret-img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Zebra striping for table rows */
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Font Awesome: reset button icon on reservations.html */
