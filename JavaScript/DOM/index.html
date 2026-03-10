@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DOM - Demo 1</title>
+</head>
+<body>
+
+    <h1>X-Men Roster Application</h1>
+    <form action="/cerebro">
+        <label for="first_name">First Name: </label>
+        <input type="text" name="fname" id="first_name" />
+        <br/><br/>
+        <label for="">
+            Password: <input type="password" name="pw" id="pw">
+        </label>
+        <br/><br/>
+        <label for="">Are you alive?</label>
+        <input type="radio" name="alive" id="yes" value="yes" />
+        <label for="yes">Yes</label>
+
+        <input type="radio" name="alive" id="no" value="no" />
+        <label for="no">No</label>
+
+        <button type="submit">Join Team</button>
+    </form>
+
+    <script>
+        const form = document.getElementsByTagName("form")
+        form[0].addEventListener("submit", (event) => {
+            event.preventDefault()
+            let firstName = document.getElementById("first_name")
+            let password = document.getElementById("pw")
+            let isAlive = document.querySelector('input[name="alive"]:checked')
+            console.log("Submitted")
+            // console.log("Value from first name input: ", firstName.value, password.value, isAlive.value)
+            let newData = {
+                firstName: firstName.value,
+                password: password.value,
+                isAlive: isAlive.value
+            }
+
+
+            console.log(JSON.stringify(newData))
+        })
+    </script>
+
+
+
+
+</body>
+</html>
+
+
+<!--    <h1>Avengers</h1>-->
+<!--    <h1>X-Men</h1>-->
+
+<!--    <ul>-->
+<!--        <li id="teamLeader">Wolverine</li>-->
+<!--        <li class="mutant">Cyclops</li>-->
+<!--        <li class="mutant">ShadowCat</li>-->
+<!--    </ul>-->
+
+<!--    <script>-->
+<!--        let teamContent = allTeams[0].innerHTML-->
+<!--        allTeams[1].innerHTML-->
+<!--    </script>-->
+
+
