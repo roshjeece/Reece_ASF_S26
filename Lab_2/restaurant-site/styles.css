@@ -272,3 +272,10 @@ tbody tr:nth-child(even) {
 }
 
 /* Font Awesome: reset button icon on reservations.html */
+
+
+fieldset,
+fieldset div,
+fieldset label {
+    text-align: left;
+}

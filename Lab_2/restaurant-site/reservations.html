@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9a878a88ca.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gear and Gutter Reservations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -31,11 +30,11 @@
         <legend>Contact Info:</legend>
     <!--    Name-->
         <div><label for="name">Alias:</label>
-            <input type="text" name="name" id="name" maxlength="20" required></div>
+            <input type="text" name="name" id="name" maxlength="20" required placeholder="e.g. J. Hawthorne"></div>
 
     <!--    Email-->
         <div><label for="email">Email:</label>
-            <input type="email" name="email" id="email" required></div>
+            <input type="email" name="email" id="email" required placeholder="name@example.com"></div>
     </fieldset>
 
     <fieldset>
@@ -81,7 +80,7 @@
 <fieldset>
     <legend>Preferences:</legend>
     <div><label for="dietaryNotes">Dietary Notes:</label>
-        <textarea maxlength="30" id="dietaryNotes"></textarea></div>
+        <textarea maxlength="30" id="dietaryNotes" placeholder="e.g. no nuts, vegetarian, gluten-free"></textarea></div>
 
     <div><label for="newsletterOptIn">Optional Newsletter Opt-in:</label>
         <input type="checkbox" name="newsletter" id="newsletterOptIn"></div>
@@ -94,5 +93,6 @@
 
 </form>
 
+<script src="https://kit.fontawesome.com/9a878a88ca.js" crossorigin="anonymous"></script>
 </body>
 </html>
