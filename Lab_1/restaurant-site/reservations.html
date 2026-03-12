@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gear and Gutter Reservations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!--Navbar-->
+<nav class="card">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="reservations.html">Reservations</a>
+</nav>
+<div class="card">
+    <h1>RESERVATIONS</h1>
+
+    <!--"Request Only" Reservations Explanation Paragraph-->
+    <p>At The Gear & Gutter Speakeasy, nothing is ever quite as simple as walking through the front door. Reservations are accepted <strong>by request only</strong>, as space in our little corner of the underground is limited and discretion is part of the experience. Submit your request below and our staff will review it carefully. If the timing is right and the room allows, you’ll receive confirmation with instructions on how—and when—to find the door. Until then, consider it a polite knock on the right lock.
+    </p>
+</div>
+
+<form class="card">
+    <fieldset>
+        <legend>Contact Info:</legend>
+    <!--    Name-->
+        <div><label for="name">Alias:</label>
+            <input type="text" name="name" id="name" maxlength="20" required placeholder="e.g. J. Hawthorne"></div>
+
+    <!--    Email-->
+        <div><label for="email">Email:</label>
+            <input type="email" name="email" id="email" required placeholder="name@example.com"></div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Reservation Details:</legend>
+
+        <!--    Party Size-->
+        <div><label for="party-size-select">Party Size (Max Size: 8)</label>
+            <select name="party-size" id="party-size-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select></div>
+
+    <!--    Date-->
+        <div><label for="date">Select a date (today or future):</label>
+            <input type="date" id="date" name="reservationDate" required></div>
+
+    <!--    Time-->
+        <div><label for="time">Time:</label>
+            <input type="time" name="time" id="time" required></div>
+    </fieldset>
+
+
+
+    <!--    Seating-->
+    <fieldset>
+        <legend>Seating:</legend>
+
+        <div><input type="radio" name="seatingChoice" id="seating-booth" value="booth">
+            <label for="seating-booth">The Backroom Booth</label></div>
+
+        <div><input type="radio" name="seatingChoice" id="seating-bar" value="bar">
+            <label for="seating-bar">The Boiler Bar</label></div>
+
+        <div><input type="radio" name="seatingChoice" id="seating-table" value="table">
+            <label for="seating-table">The Gear Table</label></div>
+    </fieldset>
+<fieldset>
+    <legend>Preferences:</legend>
+    <div><label for="dietaryNotes">Dietary Notes:</label>
+        <textarea maxlength="30" id="dietaryNotes" placeholder="e.g. no nuts, vegetarian, gluten-free"></textarea></div>
+
+    <div><label for="newsletterOptIn">Optional Newsletter Opt-in:</label>
+        <input type="checkbox" name="newsletter" id="newsletterOptIn"></div>
+</fieldset>
+
+    <button type="submit">Submit</button>
+    <button type="reset">
+        <i class="fa-solid fa-rotate-left"></i>Reset
+    </button>
+
+</form>
+
+<script src="https://kit.fontawesome.com/9a878a88ca.js" crossorigin="anonymous"></script>
+</body>
+</html>
