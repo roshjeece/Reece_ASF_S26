@@ -12,87 +12,138 @@
 </head>
 <body>
 
-<!--Navbar-->
-<nav class="card">
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="reservations.html">Reservations</a>
+<!--Bootstrap Navbar-->
+<nav class="navbar navbar-expand-md gg-navbar">
+    <div class="container-fluid">
+
+        <!--Brand: logo + name-->
+        <a class="navbar-brand gg-brand" href="index.html">
+            <img src="images/logo.png" alt="Gear & Gutter Logo" height="50" class="d-inline-block align-middle me-2">
+            Gear &amp; Gutter
+        </a>
+
+        <!--Hamburger toggle for small screens-->
+        <button class="navbar-toggler gg-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#ggNavMenu"
+                aria-controls="ggNavMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--Collapsible link group-->
+        <div class="collapse navbar-collapse" id="ggNavMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="reservations.html">Reservations</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
 </nav>
-<div class="card">
-    <h1>RESERVATIONS</h1>
 
-    <!--"Request Only" Reservations Explanation Paragraph-->
-    <p>At The Gear & Gutter Speakeasy, nothing is ever quite as simple as walking through the front door. Reservations are accepted <strong>by request only</strong>, as space in our little corner of the underground is limited and discretion is part of the experience. Submit your request below and our staff will review it carefully. If the timing is right and the room allows, you’ll receive confirmation with instructions on how—and when—to find the door. Until then, consider it a polite knock on the right lock.
-    </p>
+<!--Bootstrap grid wrapper-->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+
+            <div class="card">
+                <h1>RESERVATIONS</h1>
+                <!--"Request Only" Reservations Explanation Paragraph-->
+                <p>At The Gear & Gutter Speakeasy, nothing is ever quite as simple as walking through the front door. Reservations are accepted <strong>by request only</strong>, as space in our little corner of the underground is limited and discretion is part of the experience. Submit your request below and our staff will review it carefully. If the timing is right and the room allows, you'll receive confirmation with instructions on how—and when—to find the door. Until then, consider it a polite knock on the right lock.
+                </p>
+            </div>
+
+            <form class="card" id="reservation-form">
+                <fieldset>
+                    <legend>Contact Info:</legend>
+                    <!--Name-->
+                    <div>
+                        <label for="name">Alias:</label>
+                        <input type="text" name="name" id="name" placeholder="e.g. J. Hawthorne">
+                    </div>
+                    <!--Email-->
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" placeholder="name@example.com">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Reservation Details:</legend>
+                    <!--Party Size-->
+                    <div>
+                        <label for="party-size-select">Party Size (Max Size: 8)</label>
+                        <select name="party-size" id="party-size-select">
+                            <option value="">-- Select --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                    <!--Date-->
+                    <div>
+                        <label for="date">Select a date (today or future):</label>
+                        <input type="date" id="date" name="reservationDate">
+                    </div>
+                    <!--Time-->
+                    <div>
+                        <label for="time">Time:</label>
+                        <input type="time" name="time" id="time">
+                    </div>
+                </fieldset>
+
+                <!--Seating-->
+                <fieldset>
+                    <legend>Seating:</legend>
+                    <div>
+                        <input type="radio" name="seatingChoice" id="seating-booth" value="booth">
+                        <label for="seating-booth">The Backroom Booth</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="seatingChoice" id="seating-bar" value="bar">
+                        <label for="seating-bar">The Boiler Bar</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="seatingChoice" id="seating-table" value="table">
+                        <label for="seating-table">The Gear Table</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Preferences:</legend>
+                    <div>
+                        <label for="dietaryNotes">Dietary Notes:</label>
+                        <textarea id="dietaryNotes" placeholder="e.g. no nuts, vegetarian, gluten-free"></textarea>
+                    </div>
+                    <div>
+                        <label for="newsletterOptIn">Optional Newsletter Opt-in:</label>
+                        <input type="checkbox" name="newsletter" id="newsletterOptIn">
+                    </div>
+                </fieldset>
+
+                <div id="form-alert"></div>
+
+                <button type="submit">Submit</button>
+                <button type="reset">
+                    <i class="fa-solid fa-rotate-left"></i>Reset
+                </button>
+            </form>
+
+        </div>
+    </div>
 </div>
-
-<form class="card">
-    <fieldset>
-        <legend>Contact Info:</legend>
-    <!--    Name-->
-        <div><label for="name">Alias:</label>
-            <input type="text" name="name" id="name" maxlength="20" required placeholder="e.g. J. Hawthorne"></div>
-
-    <!--    Email-->
-        <div><label for="email">Email:</label>
-            <input type="email" name="email" id="email" required placeholder="name@example.com"></div>
-    </fieldset>
-
-    <fieldset>
-        <legend>Reservation Details:</legend>
-
-        <!--    Party Size-->
-        <div><label for="party-size-select">Party Size (Max Size: 8)</label>
-            <select name="party-size" id="party-size-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select></div>
-
-    <!--    Date-->
-        <div><label for="date">Select a date (today or future):</label>
-            <input type="date" id="date" name="reservationDate" required></div>
-
-    <!--    Time-->
-        <div><label for="time">Time:</label>
-            <input type="time" name="time" id="time" required></div>
-    </fieldset>
-
-
-
-    <!--    Seating-->
-    <fieldset>
-        <legend>Seating:</legend>
-
-        <div><input type="radio" name="seatingChoice" id="seating-booth" value="booth">
-            <label for="seating-booth">The Backroom Booth</label></div>
-
-        <div><input type="radio" name="seatingChoice" id="seating-bar" value="bar">
-            <label for="seating-bar">The Boiler Bar</label></div>
-
-        <div><input type="radio" name="seatingChoice" id="seating-table" value="table">
-            <label for="seating-table">The Gear Table</label></div>
-    </fieldset>
-<fieldset>
-    <legend>Preferences:</legend>
-    <div><label for="dietaryNotes">Dietary Notes:</label>
-        <textarea maxlength="30" id="dietaryNotes" placeholder="e.g. no nuts, vegetarian, gluten-free"></textarea></div>
-
-    <div><label for="newsletterOptIn">Optional Newsletter Opt-in:</label>
-        <input type="checkbox" name="newsletter" id="newsletterOptIn"></div>
-</fieldset>
-
-    <button type="submit">Submit</button>
-    <button type="reset">
-        <i class="fa-solid fa-rotate-left"></i>Reset
-    </button>
-
-</form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="script.js"></script>
