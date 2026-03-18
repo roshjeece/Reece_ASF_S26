@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gear and Gutter Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!--Bootstrap Navbar-->
+<nav class="navbar navbar-expand-md gg-navbar">
+    <div class="container-fluid">
+
+        <!--Brand: logo + name-->
+        <a class="navbar-brand gg-brand" href="index.html">
+            <img src="images/logo.png" alt="Gear & Gutter Logo" height="50" class="d-inline-block align-middle me-2">
+            Gear &amp; Gutter
+        </a>
+
+        <!--Hamburger toggle for small screens-->
+        <button class="navbar-toggler gg-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#ggNavMenu"
+                aria-controls="ggNavMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--Collapsible link group-->
+        <div class="collapse navbar-collapse" id="ggNavMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="menu.html">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="reservations.html">Reservations</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<!--Bootstrap grid wrapper-->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+
+            <div class="card">
+                <h2>Illicit Provisions</h2>
+                <p>At The Gear & Gutter Speakeasy, the menu is a carefully guarded collection of indulgences designed for those who live just slightly outside the lines. Expect bold, spirit-forward cocktails, smoky infusions, and unapologetically rich flavors inspired by back-alley ingenuity and industrial-age decadence. Every pour, plate, and pairing feels a bit illicit — crafted with precision, served with attitude, and intended to linger long after the last gear stops turning.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="cinzel">Tonight's Specials</h2>
+                <p>
+                    Indulge in our house favorites, from craft cocktails to savory bites,
+                    with a few backroom temptations worth lingering over.
+                </p>
+                <img
+                        src="images/img2.png"
+                        alt="Steampunk specials board with cocktails and smoked meats inside the Gear & Gutter Speakeasy"
+                        class="menu-image"
+                >
+            </div>
+
+            <!--JS-rendered menu cards-->
+            <div id="menu-cards" class="card"></div>
+
+            <!--combo menu table-->
+            <div class="table-container card">
+                <table class="center-table">
+                    <caption>House Pairings for Evenings Best Kept Off the Record</caption>
+                    <thead>
+                    <tr>
+                        <td>COMBO</td>
+                        <td>INCLUDES</td>
+                        <td>PRICE</td>
+                        <td>NOTES</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Brass Knuckle Nightcap</td>
+                        <td>The Brass Knuckle Old Fashioned, Contraband Bone Marrow Toast</td>
+                        <td>$21</td>
+                        <td>Popular</td>
+                    </tr>
+                    <tr>
+                        <td>The Clockwork Pairing</td>
+                        <td>Clockwork Widow, Gutter-Fried Steam Dumplings</td>
+                        <td>$19</td>
+                        <td>House Favorite</td>
+                    </tr>
+                    <tr>
+                        <td>Boiler Room Deal</td>
+                        <td>Boiler Room Burn, Underground Short Rib Sliders</td>
+                        <td>$20</td>
+                        <td>Spicy</td>
+                    </tr>
+                    <tr>
+                        <td>The Backroom Plate</td>
+                        <td>Contraband Bone Marrow Toast, Gutter-Fried Steam Dumplings</td>
+                        <td>$16</td>
+                        <td>Popular</td>
+                    </tr>
+                    <tr>
+                        <td>Negotiator's Special</td>
+                        <td>Underground Short Rib Sliders, Brass Knuckle Old Fashioned</td>
+                        <td>$22</td>
+                        <td>Hearty</td>
+                    </tr>
+                    <tr>
+                        <td>The Underground Trio</td>
+                        <td>Gutter-Fried Steam Dumplings, Short Rib Slider, Clockwork Widow</td>
+                        <td>$23</td>
+                        <td>Popular</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Secret Off-Menu (CSS-only reveal) -->
+            <section class="secret card">
+                <h2 class="section-title">Off the Record</h2>
+                <p class="secret-hint">
+                    Rumor says if you whisper the password to the right lock…
+                </p>
+                <input type="checkbox" id="secret-toggle" class="secret-toggle">
+                <!-- Keyhole interaction -->
+                <label for="secret-toggle" class="keyhole-lock">
+                    <span class="keyhole"></span>
+                    <span class="lock-text">Tap the lock</span>
+                </label>
+                <!-- Hidden item -->
+                <article class="secret-item">
+                    <img
+                            src="images/img3.png"
+                            alt="A glowing green absinthe cocktail with curling smoke and a candied serpent garnish on a tarnished brass tray."
+                            class="secret-img"
+                    >
+                    <h3>Viper's Gambit</h3>
+                    <p>
+                        Absinthe elixir over serrano ice with hickory smoke, finished with a charred lemon and a candied serpent twist.
+                        Served only to those who know which door to knock on.
+                    </p>
+                </article>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>

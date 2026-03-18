@@ -1,0 +1,409 @@
+/*
+COLOR THEME – Gear & Gutter Speakeasy
+
+This stylesheet uses a dark, industrial palette inspired by a hidden steampunk
+speakeasy.
+
+Base Background (#1a1714): dim, underground atmosphere,
+with radial gradients that add depth and a smoky/mechanical feel.
+
+Text (#F8F0E3): warm ivory tone for readability against the dark backdrop.
+Interactive Elements (#c49a5a, #e0b97a): links, accents use brass and antique gold tones
+like aged metal, gears, and vintage machinery.
+
+Intent: moody, secretive, mechanical (aesthetic of an underground steampunk bar)
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1a1714;
+    background-image:
+            radial-gradient(ellipse at 30% 20%, #2a241c, transparent 60%),
+            radial-gradient(ellipse at 70% 80%, #181c13, transparent 55%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #F8F0E3;
+    text-align: center;
+    padding: 0 2rem 2rem 2rem; /* top padding removed — navbar handles top edge */
+}
+
+a {
+    color: #c49a5a;
+    text-decoration: underline;
+    text-decoration-color: rgba(196, 154, 90, 0.35);
+    text-underline-offset: 3px;
+    transition: color 0.2s, text-decoration-color 0.2s;
+    margin: 0 0.75rem; /* space between nav links */
+}
+a:hover {
+    color: #e0b97a;
+    text-decoration-color: rgba(224, 185, 122, 0.7);
+}
+
+/* Reset global <a> margin so it doesn't bleed into Bootstrap navbar */
+.navbar a {
+    margin: 0;
+    text-decoration: none;
+}
+
+caption {
+    font-family: "Cinzel", serif;
+    font-size: 0.95rem;
+    color: #c49a5a;
+    padding: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+/* Form styling: aligned labels, spacing, consistent input widths */
+form .card,
+form fieldset {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+fieldset legend {
+    color: #c49a5a;
+    font-size: 1rem;
+    padding: 0 0.5rem;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+form label {
+    min-width: 160px;
+    text-align: right;
+    color: #F8F0E3;
+}
+
+form input,
+form select,
+form textarea {
+    width: 260px;
+    padding: 0.4rem 0.6rem;
+    background-color: #2a241c;
+    color: #F8F0E3;
+    border: 1px solid rgba(196, 154, 90, 0.4);
+    border-radius: 6px;
+}
+
+form input[type="checkbox"],
+form input[type="radio"] {
+    width: auto;
+}
+
+form button {
+    margin: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem 1.25rem;
+    background-color: #c49a5a;
+    color: #1a1714;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e0b97a;
+}
+
+p {
+    max-width: 65ch;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    margin-bottom: 0.5rem; /* space below headings */
+    margin-top: 1rem;
+}
+
+header {
+    margin-top: 2rem; /* space above hero section */
+}
+
+header img {
+    max-width: 500px;
+    width: 100%;
+}
+
+header.card img {
+    display: block;
+    margin: 1rem auto 0;
+}
+
+img {
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Navbar logo: fixed height, no margin, no height:auto override */
+.gg-brand img {
+    height: 50px;
+    width: auto;
+    margin-top: 0;
+}
+
+/* ── Bootstrap Navbar overrides ─────────────────────────────── */
+
+/* Overall navbar bar */
+.gg-navbar {
+    background-color: rgba(20, 17, 14, 0.95);
+    border-bottom: 1px solid rgba(196, 154, 90, 0.35);
+    padding: 0.5rem 1.25rem;
+}
+
+/* Brand text next to logo */
+.gg-brand {
+    font-family: "Cinzel", serif;
+    font-size: 0.95rem; /* reduced from 1.1rem */
+    color: #c49a5a !important;
+    letter-spacing: 0.04em; /* tightened slightly */
+}
+
+.gg-brand:hover {
+    color: #e0b97a !important;
+}
+
+/* Nav links */
+.gg-navbar .nav-link {
+    color: #c49a5a !important;
+    font-family: "Cinzel", serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin: 0 0.25rem;
+    transition: color 0.2s;
+}
+
+.gg-navbar .nav-link:hover {
+    color: #e0b97a !important;
+}
+
+/* Active page link */
+.gg-navbar .nav-link.active {
+    color: #F8F0E3 !important;
+    border-bottom: 2px solid #c49a5a;
+}
+
+/* Hamburger toggler — tint the icon to match brass palette */
+.gg-toggler {
+    border-color: rgba(196, 154, 90, 0.5);
+}
+
+.gg-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28196%2C154%2C90%2C0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.card {
+    background: rgba(26, 23, 20, 0.85);
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    color: #F8F0E3;  /* ADD THIS LINE */
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+/* Override Bootstrap's text color resets on headings and table cells */
+h1, h2, h3, h4, h5, h6,
+td, th {
+    color: #F8F0E3;
+}
+
+
+
+
+
+.center-table {
+    max-width: 70ch;
+    margin: 2rem auto 0;
+}
+
+
+.cinzel {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+         }
+
+/* Table styling: borders, zebra striping, caption styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 2px solid rgba(196, 154, 90, 0.5);
+}
+
+th, td {
+    padding: 0.6rem 1rem;
+}
+
+.table-container {
+    padding-bottom: 20px; /* Adds space below the whole table */
+}
+/* Hide checkbox */
+.secret-toggle {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Hint text */
+.secret-hint {
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+/* Lock plate */
+.keyhole-lock {
+    display: inline-block;
+    padding: 1.5rem;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #8a6a2c, #caa24f);
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+}
+
+/* Lock hover effect */
+.keyhole-lock:hover {
+    transform: translateY(-2px);
+}
+
+/* Keyhole shape */
+.keyhole {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 0.5rem auto;
+    background: black;
+    border-radius: 50%;
+    position: relative;
+}
+
+/* keyhole stem */
+.keyhole::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 18px;
+    background: black;
+    top: 18px;
+    left: 7px;
+    border-radius: 4px;
+}
+
+/* text under keyhole */
+.lock-text {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+/* Hidden item */
+.secret-item {
+    display: none;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+}
+
+/* Reveal when clicked */
+.secret-toggle:checked + .keyhole-lock + .secret-item {
+    display: block;
+}
+
+/* Image */
+.secret-img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Zebra striping for table rows */
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Font Awesome: reset button icon on reservations.html */
+
+
+fieldset,
+fieldset div,
+fieldset label {
+    text-align: left;
+}
+
+/* JS-rendered menu cards */
+.menu-card {
+    background: rgba(26, 23, 20, 0.9);
+    border: 1px solid rgba(196, 154, 90, 0.4);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-card-body {
+    padding: 1rem;
+}
+
+.menu-card-title {
+    font-family: "Cinzel", serif;
+    color: #c49a5a;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-card-text {
+    font-size: 0.875rem;
+    color: #F8F0E3;
+    max-width: 100%;
+}
+
+.menu-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(196, 154, 90, 0.25);
+}
+
+.menu-card-category {
+    font-size: 0.75rem;
+    color: #c49a5a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.menu-card-price {
+    font-family: "Cinzel", serif;
+    color: #e0b97a;
+    font-size: 1rem;
+}
+
+/* Form submission confirmation message */
+#form-confirmation {
+    color: #e0b97a;
+    font-family: "Cinzel", serif;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
