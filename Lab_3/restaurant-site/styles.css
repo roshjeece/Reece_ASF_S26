@@ -88,6 +88,12 @@ form label {
     color: #F8F0E3;
 }
 
+.custom-dropdown {
+    background-color: #2a241c;
+    border: 1px solid rgba(196, 154, 90, 0.4);
+    color: #F8F0E3;
+}
+
 form input,
 form select,
 form textarea {
@@ -406,4 +412,232 @@ fieldset label {
     font-family: "Cinzel", serif;
     font-size: 0.95rem;
     margin-bottom: 0.75rem;
+}
+
+/* ── QUANTITY SPINNER ─────────────────────────────────────────────────────── */
+
+.menu-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(196, 154, 90, 0.2);
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.qty-spinner {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(196, 154, 90, 0.5);
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.qty-btn {
+    background: rgba(196, 154, 90, 0.12);
+    color: #c49a5a;
+    border: none;
+    padding: 0.3rem 0.65rem;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+}
+
+.qty-btn:hover {
+    background: rgba(196, 154, 90, 0.28);
+    color: #e0b97a;
+}
+
+.qty-value {
+    display: inline-block;
+    min-width: 1.8rem;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    font-size: 0.9rem;
+    color: #F8F0E3;
+    padding: 0.3rem 0.25rem;
+    background: rgba(26, 23, 20, 0.9);
+    border-left: 1px solid rgba(196, 154, 90, 0.3);
+    border-right: 1px solid rgba(196, 154, 90, 0.3);
+}
+
+/* ── ADD TO CART BUTTON ───────────────────────────────────────────────────── */
+
+.add-to-cart-btn {
+    background: linear-gradient(135deg, #8a6a2c, #c49a5a);
+    color: #1a1714;
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 0.85rem;
+    font-family: "Cinzel", serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.add-to-cart-btn:hover {
+    background: linear-gradient(135deg, #c49a5a, #e0b97a);
+}
+
+.add-to-cart-btn:disabled {
+    opacity: 0.65;
+    cursor: default;
+}
+
+/* ── CART PAGE TABLE ──────────────────────────────────────────────────────── */
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgba(196, 154, 90, 0.3);
+    text-align: left;
+    color: #F8F0E3;
+}
+
+.cart-table thead tr {
+    background: rgba(196, 154, 90, 0.1);
+}
+
+.cart-table thead th {
+    font-family: "Cinzel", serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: #c49a5a;
+}
+
+.cart-item-name {
+    font-family: "Cinzel", serif;
+    font-size: 0.9rem;
+    color: #e0b97a;
+}
+
+.cart-category-badge {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #c49a5a;
+    border: 1px solid rgba(196, 154, 90, 0.4);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+}
+
+/* SUBTOTAL AND TAX ROWS */
+.cart-summary-row td {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cart-summary-label {
+    font-size: 0.85rem;
+    color: #c49a5a;
+    text-align: right;
+    letter-spacing: 0.04em;
+}
+
+/* FINAL TOTAL ROW */
+.cart-total-row td {
+    background: rgba(196, 154, 90, 0.08);
+    border-top: 2px solid rgba(196, 154, 90, 0.6);
+}
+
+.cart-total-label {
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.08em;
+    color: #c49a5a;
+    text-align: right;
+}
+
+#cart-grand-total {
+    font-family: "Cinzel", serif;
+    font-size: 1.1rem;
+    color: #e0b97a;
+}
+
+/* ── CART ACTION BUTTONS ──────────────────────────────────────────────────── */
+
+.cart-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 1.5rem auto 2rem;
+    max-width: 800px;
+}
+
+.cart-btn {
+    font-family: "Cinzel", serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 0.55rem 1.4rem;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.cart-btn-cancel {
+    background: transparent;
+    color: #c49a5a;
+    border: 1px solid rgba(196, 154, 90, 0.5);
+}
+
+.cart-btn-cancel:hover {
+    background: rgba(180, 60, 60, 0.2);
+    color: #e07a7a;
+    border-color: rgba(180, 60, 60, 0.5);
+}
+
+.cart-btn-submit {
+    background: linear-gradient(135deg, #8a6a2c, #c49a5a);
+    color: #1a1714;
+    border: 1px solid transparent;
+}
+
+.cart-btn-submit:hover {
+    background: linear-gradient(135deg, #c49a5a, #e0b97a);
+}
+
+/* ── BOOTSTRAP MODAL OVERRIDES ────────────────────────────────────────────── */
+
+.gg-modal {
+    background-color: #1e1a16;
+    border: 1px solid rgba(196, 154, 90, 0.4);
+    color: #F8F0E3;
+}
+
+.gg-modal .modal-header {
+    border-bottom: 1px solid rgba(196, 154, 90, 0.3);
+}
+
+.gg-modal .modal-footer {
+    border-top: 1px solid rgba(196, 154, 90, 0.3);
+    gap: 0.75rem;
+}
+
+.gg-modal .modal-title {
+    color: #c49a5a;
+}
+
+.gg-modal .modal-body {
+    color: #F8F0E3;
+}
+
+/* ── EMPTY CART MESSAGE ───────────────────────────────────────────────────── */
+
+.empty-cart-msg {
+    padding: 1.5rem 0;
+    color: #c49a5a;
+    font-style: italic;
+    text-align: center;
 }

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gear and Gutter — Your Order</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── NAVBAR ────────────────────────────────────────────────────────────── -->
+<nav class="navbar navbar-expand-md gg-navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand gg-brand" href="index.html">
+            <img src="images/logo.png" alt="Gear & Gutter Logo" height="50" class="d-inline-block align-middle me-2">
+            Gear &amp; Gutter
+        </a>
+        <button class="navbar-toggler gg-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#ggNavMenu"
+                aria-controls="ggNavMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="ggNavMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="reservations.html">Reservations</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="cart.html">Order</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ── PAGE CONTENT ──────────────────────────────────────────────────────── -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+
+            <div class="card">
+                <h2 class="cinzel">Your Order</h2>
+                <p>A carefully assembled collection of tonight's contraband. Review your selections before the deal is sealed.</p>
+            </div>
+
+            <!-- Cart table renders here -->
+            <div class="card" id="cart-wrapper">
+                <div id="cart-container"></div>
+            </div>
+
+            <!-- Action buttons — always visible -->
+            <div class="cart-actions">
+                <button class="cart-btn cart-btn-cancel" id="btn-cancel-order">Cancel Order</button>
+                <button class="cart-btn cart-btn-submit" id="btn-submit-order">Submit Order</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ── CANCEL CONFIRMATION MODAL ─────────────────────────────────────────── -->
+<div class="modal fade" id="cancelConfirmModal" tabindex="-1" aria-labelledby="cancelConfirmLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content gg-modal">
+            <div class="modal-header">
+                <h5 class="modal-title cinzel" id="cancelConfirmLabel">Cancel Your Order?</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to cancel your order? All selections will be cleared.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cart-btn cart-btn-cancel" id="btn-confirm-cancel">Yes, Cancel Order</button>
+                <button type="button" class="cart-btn cart-btn-submit" data-bs-dismiss="modal">Keep My Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── THANK YOU MODAL (shared by cancel + submit flows) ─────────────────── -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content gg-modal">
+            <div class="modal-header">
+                <h5 class="modal-title cinzel" id="thankYouLabel">Order Received</h5>
+            </div>
+            <div class="modal-body" id="thank-you-body">
+                Your order has been submitted. The kitchen has been notified. Watch for the knock.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>

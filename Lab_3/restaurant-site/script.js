@@ -88,28 +88,90 @@ const MENU_ITEMS = [
     }
 ];
 
-// RENDER MENU ITEMS TO PAGE AS BOOTSTRAP CARDS
-function renderMenuCards() {
+// ─── CONSTANTS ────────────────────────────────────────────────────────────────
+
+const TAX_RATE = 0.0825; // 8.25% FIXED TAX RATE
+
+// ─── CART UTILITIES ───────────────────────────────────────────────────────────
+
+// LOAD CART FROM LOCALSTORAGE (RETURNS ARRAY OF { id, quantity })
+function getCart() {
+    return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+
+// SAVE CART ARRAY BACK TO LOCALSTORAGE
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// ADD OR UPDATE ITEM IN CART
+// IF ITEM EXISTS, INCREMENT QUANTITY BY `quantity`; OTHERWISE INSERT NEW ENTRY
+function addToCart(id, quantity) {
+    const cart = getCart();
+    const existing = cart.find(function(entry) { return entry.id === id; });
+
+    if (existing) {
+        existing.quantity += quantity;
+    } else {
+        cart.push({ id: id, quantity: quantity });
+    }
+
+    saveCart(cart);
+    showAddedFeedback(id);
+}
+
+// CLEAR ALL ITEMS FROM CART
+function clearCart() {
+    saveCart([]);
+}
+
+// FLASH A BRIEF "ADDED" CONFIRMATION ON THE BUTTON THAT WAS CLICKED
+function showAddedFeedback(id) {
+    const btn = document.getElementById('add-btn-' + id);
+    if (!btn) return;
+    const original = btn.textContent;
+    btn.textContent = '✓ Added';
+    btn.disabled = true;
+    setTimeout(function() {
+        btn.textContent = original;
+        btn.disabled = false;
+    }, 1200);
+}
+
+// ─── MENU RENDER ──────────────────────────────────────────────────────────────
+
+// RENDER MENU ITEMS TO PAGE AS BOOTSTRAP CARDS WITH QUANTITY SELECTOR + ADD TO CART
+function renderMenuCards(category) {
 
     const container = document.getElementById("menu-cards");
 
     // IF NO CONTAINER EXISTS, EXIT EARLY (NOT ON MENU PAGE)
     if (!container) return;
 
-    // GET UNIQUE CATEGORIES IN ORDER
-    const categories = ["Breakfast", "Lunch", "Dinner"];
+    container.innerHTML = "";
 
-    categories.forEach(function(category) {
+    let categories;
+
+    // DETERMINE WHICH CATEGORY/CATEGORIES TO RENDER
+    if (category === undefined) {
+        categories = ["Breakfast", "Lunch", "Dinner"];
+    } else if (category === "breakfast") {
+        categories = ["Breakfast"];
+    } else if (category === "lunch") {
+        categories = ["Lunch"];
+    } else {
+        categories = ["Dinner"];
+    }
+
+    categories.forEach(function(cat) {
 
         // FILTER ITEMS BELONGING TO THIS CATEGORY
-        const items = MENU_ITEMS.filter(function(item) {
-            return item.category === category;
-        });
+        const items = MENU_ITEMS.filter(function(item) { return item.category === cat; });
 
         // BUILD CATEGORY HEADING
         const heading = document.createElement("h2");
         heading.classList.add("cinzel");
-        heading.textContent = category;
+        heading.textContent = cat;
         container.appendChild(heading);
 
         // BUILD BOOTSTRAP ROW TO HOLD CARDS
@@ -124,8 +186,9 @@ function renderMenuCards() {
 
             // FORMAT PRICE AS USD
             const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
-            const formattedPrice = money.format(item.price);            // BUILD CARD HTML
+            const formattedPrice = money.format(item.price);
 
+            // BUILD CARD HTML WITH QUANTITY SPINNER AND ADD TO CART BUTTON
             col.innerHTML =
                 '<div class="menu-card h-100">' +
                 '<div class="menu-card-body">' +
@@ -136,6 +199,14 @@ function renderMenuCards() {
                 '<span class="menu-card-category">' + item.category + '</span>' +
                 '<span class="menu-card-price">' + formattedPrice + '</span>' +
                 '</div>' +
+                '<div class="menu-card-actions">' +
+                '<div class="qty-spinner">' +
+                '<button class="qty-btn qty-dec" data-id="' + item.id + '" aria-label="Decrease quantity">−</button>' +
+                '<span class="qty-value" id="qty-' + item.id + '">1</span>' +
+                '<button class="qty-btn qty-inc" data-id="' + item.id + '" aria-label="Increase quantity">+</button>' +
+                '</div>' +
+                '<button class="add-to-cart-btn" id="add-btn-' + item.id + '" data-id="' + item.id + '">Add to Cart</button>' +
+                '</div>' +
                 '</div>';
 
             row.appendChild(col);
@@ -143,13 +214,212 @@ function renderMenuCards() {
 
         container.appendChild(row);
     });
+
+    // ATTACH QUANTITY SPINNER AND ADD-TO-CART EVENTS AFTER RENDER
+    attachMenuCardEvents();
 }
 
-// CALL ON PAGE LOAD
+// WIRE UP QUANTITY SPINNERS AND ADD TO CART BUTTONS AFTER EACH RENDER
+function attachMenuCardEvents() {
+
+    // QUANTITY DECREASE — MINIMUM 1
+    document.querySelectorAll('.qty-dec').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const id = parseInt(this.dataset.id);
+            const display = document.getElementById('qty-' + id);
+            let current = parseInt(display.textContent);
+            if (current > 1) {
+                display.textContent = current - 1;
+            }
+        });
+    });
+
+    // QUANTITY INCREASE — MAXIMUM 5
+    document.querySelectorAll('.qty-inc').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const id = parseInt(this.dataset.id);
+            const display = document.getElementById('qty-' + id);
+            let current = parseInt(display.textContent);
+            if (current < 5) {
+                display.textContent = current + 1;
+            }
+        });
+    });
+
+    // ADD TO CART — READ CURRENT QTY VALUE AND CALL addToCart
+    document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const id = parseInt(this.dataset.id);
+            const qty = parseInt(document.getElementById('qty-' + id).textContent);
+            addToCart(id, qty);
+        });
+    });
+}
+
+// ─── DROPDOWN FILTER WIRING ───────────────────────────────────────────────────
+
 renderMenuCards();
 
-// RESERVATION FORM VALIDATION
-// RESERVATION FORM VALIDATION
+const btnAll       = document.getElementById("selectAll");
+const btnBreakfast = document.getElementById("selectBreakfast");
+const btnLunch     = document.getElementById("selectLunch");
+const btnDinner    = document.getElementById("selectDinner");
+
+if (btnAll)       btnAll.addEventListener("click",       function() { renderMenuCards(); });
+if (btnBreakfast) btnBreakfast.addEventListener("click", function() { renderMenuCards("breakfast"); });
+if (btnLunch)     btnLunch.addEventListener("click",     function() { renderMenuCards("lunch"); });
+if (btnDinner)    btnDinner.addEventListener("click",    function() { renderMenuCards("dinner"); });
+
+// ─── CART PAGE RENDER ─────────────────────────────────────────────────────────
+
+function renderCartPage() {
+
+    const container = document.getElementById("cart-container");
+
+    // EXIT EARLY IF NOT ON CART PAGE
+    if (!container) return;
+
+    const cart = getCart();
+    const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+
+    container.innerHTML = "";
+
+    // DISPLAY EMPTY STATE MESSAGE PER SPEC
+    if (cart.length === 0) {
+        const msg = document.createElement("p");
+        msg.classList.add("empty-cart-msg");
+        msg.textContent = "Your cart is empty.";
+        container.appendChild(msg);
+        return;
+    }
+
+    // BUILD ORDER TABLE
+    const table = document.createElement("table");
+    table.classList.add("cart-table");
+
+    const thead = document.createElement("thead");
+    thead.innerHTML =
+        '<tr>' +
+        '<th>Item</th>' +
+        '<th>Category</th>' +
+        '<th>Unit Price</th>' +
+        '<th>Qty</th>' +
+        '<th>Line Total</th>' +
+        '</tr>';
+    table.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+    let subtotal = 0;
+
+    // BUILD ONE ROW PER CART ENTRY
+    cart.forEach(function(entry) {
+        const item = MENU_ITEMS.find(function(m) { return m.id === entry.id; });
+        if (!item) return;
+
+        const lineTotal = item.price * entry.quantity;
+        subtotal += lineTotal;
+
+        const tr = document.createElement("tr");
+        tr.innerHTML =
+            '<td class="cart-item-name">' + item.name + '</td>' +
+            '<td><span class="cart-category-badge">' + item.category + '</span></td>' +
+            '<td>' + money.format(item.price) + '</td>' +
+            '<td>' + entry.quantity + '</td>' +
+            '<td>' + money.format(lineTotal) + '</td>';
+
+        tbody.appendChild(tr);
+    });
+
+    // CALCULATE TAX AND FINAL TOTAL
+    const taxAmount   = subtotal * TAX_RATE;
+    const finalTotal  = subtotal + taxAmount;
+
+    // SUBTOTAL ROW
+    const subtotalRow = document.createElement("tr");
+    subtotalRow.classList.add("cart-summary-row");
+    subtotalRow.innerHTML =
+        '<td colspan="4" class="cart-summary-label">Subtotal</td>' +
+        '<td>' + money.format(subtotal) + '</td>';
+    tbody.appendChild(subtotalRow);
+
+    // TAX ROW
+    const taxRow = document.createElement("tr");
+    taxRow.classList.add("cart-summary-row");
+    taxRow.innerHTML =
+        '<td colspan="4" class="cart-summary-label">Tax (8.25%)</td>' +
+        '<td>' + money.format(taxAmount) + '</td>';
+    tbody.appendChild(taxRow);
+
+    // FINAL TOTAL ROW
+    const totalRow = document.createElement("tr");
+    totalRow.classList.add("cart-total-row");
+    totalRow.innerHTML =
+        '<td colspan="4" class="cart-total-label">Total</td>' +
+        '<td id="cart-grand-total">' + money.format(finalTotal) + '</td>';
+    tbody.appendChild(totalRow);
+
+    table.appendChild(tbody);
+    container.appendChild(table);
+}
+
+// ─── CART PAGE MODAL FLOWS ────────────────────────────────────────────────────
+
+function initCartPageButtons() {
+
+    const btnCancel = document.getElementById("btn-cancel-order");
+    const btnSubmit = document.getElementById("btn-submit-order");
+
+    // EXIT EARLY IF NOT ON CART PAGE
+    if (!btnCancel || !btnSubmit) return;
+
+    const cancelConfirmModalEl = document.getElementById("cancelConfirmModal");
+    const thankYouModalEl      = document.getElementById("thankYouModal");
+    const thankYouBody         = document.getElementById("thank-you-body");
+    const btnConfirmCancel     = document.getElementById("btn-confirm-cancel");
+
+    const cancelConfirmModal = new bootstrap.Modal(cancelConfirmModalEl);
+    const thankYouModal      = new bootstrap.Modal(thankYouModalEl);
+
+    // CANCEL ORDER: OPEN CONFIRMATION MODAL
+    btnCancel.addEventListener("click", function() {
+        cancelConfirmModal.show();
+    });
+
+    // CONFIRMED CANCEL: CLEAR CART → SHOW THANK YOU → REDIRECT ON CLOSE
+    btnConfirmCancel.addEventListener("click", function() {
+        cancelConfirmModal.hide();
+
+        // WAIT FOR CANCEL MODAL TO FULLY CLOSE BEFORE SHOWING THANK YOU
+        cancelConfirmModalEl.addEventListener("hidden.bs.modal", function onHidden() {
+            cancelConfirmModalEl.removeEventListener("hidden.bs.modal", onHidden);
+            thankYouBody.textContent = "Your order has been cancelled. Come back when the steam clears.";
+            clearCart();
+            renderCartPage();
+            thankYouModal.show();
+        });
+    });
+
+    // SUBMIT ORDER: SHOW THANK YOU → CLEAR CART → REDIRECT ON CLOSE
+    btnSubmit.addEventListener("click", function() {
+        thankYouBody.textContent = "Your order has been submitted. The kitchen has been notified. Watch for the knock.";
+        clearCart();
+        renderCartPage();
+        thankYouModal.show();
+    });
+
+    // REDIRECT TO MENU WHEN THANK YOU MODAL CLOSES (COVERS BOTH FLOWS)
+    thankYouModalEl.addEventListener("hidden.bs.modal", function() {
+        window.location.href = "menu.html";
+    });
+}
+
+// ─── BOOT CART PAGE ───────────────────────────────────────────────────────────
+
+renderCartPage();
+initCartPageButtons();
+
+// ─── RESERVATION FORM VALIDATION ─────────────────────────────────────────────
+
 function validateReservationForm() {
 
     const form = document.getElementById("reservation-form");
